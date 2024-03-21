@@ -5,6 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph.title}>Hello World!</Text>
+      <Text style={styles.paragraph}>with Expo.io</Text>
       <StatusBar style="auto" />
     </View>
   );
