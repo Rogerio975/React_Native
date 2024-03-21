@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.paragragh}>Hello World!</Text>
+      <Text style={styles.paragraph.title}>Hello World!</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -17,7 +17,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  paragragh: {
+  paragraph: {
     color: 'white',
-  }
+    title: {
+      fontSize: 28,
+      color: 'white', // Adicionando a cor branca aqui
+    }
+  },
 });
