@@ -1,4 +1,4 @@
-import { isCpfValid } from 'cpf-cnpj-validator';
+import { isCPF } from 'cpf-cnpj-validator';
 import React, { useState } from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import validator from 'validator';
@@ -20,12 +20,12 @@ const CadastroClientes = () => {
       return;
     }
 
-    if (cpf.replace(/\D/g, '').length > 11) {
-      Alert.alert('Erro', 'CPF deve conter no máximo 11 dígitos');
+    if (cpf.replace(/\D/g, '').length !== 11) {
+      Alert.alert('Erro', 'CPF deve conter 11 dígitos');
       return;
     }
 
-    if (!isCpfValid(cpf)) {
+    if (!isCPF(cpf)) {
       Alert.alert('Erro', 'CPF inválido');
       return;
     }
@@ -52,11 +52,11 @@ const CadastroClientes = () => {
   };
 
   const formatCPF = (text) => {
-    const cleaned = text.replace(/\D/g, '');
+    let cleaned = text.replace(/\D/g, '');
     if (cleaned.length > 11) {
       cleaned = cleaned.substr(0, 11); // Limita para no máximo 11 dígitos
     }
-    const formatted = cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    let formatted = cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
     return formatted;
   };
 
@@ -64,26 +64,26 @@ const CadastroClientes = () => {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Nome:</Text>
       <TextInput
-        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10, textAlign: 'center' }}
         onChangeText={text => setNome(text)}
         value={nome}
       />
       <Text>E-mail:</Text>
       <TextInput
-        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10, textAlign: 'center' }}
         onChangeText={text => setEmail(text)}
         value={email}
       />
       <Text>Telefone:</Text>
       <TextInput
-        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10, textAlign: 'center' }}
         onChangeText={text => setTelefone(formatTelefone(text))}
         value={telefone}
         keyboardType="phone-pad"
       />
       <Text>CPF:</Text>
       <TextInput
-        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10, textAlign: 'center' }}
         onChangeText={text => setCpf(formatCPF(text))}
         value={cpf}
         keyboardType="numeric"
