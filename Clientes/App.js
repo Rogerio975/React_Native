@@ -20,6 +20,11 @@ const CadastroClientes = () => {
       return;
     }
 
+    if (cpf.replace(/\D/g, '').length > 11) {
+      Alert.alert('Erro', 'CPF deve conter no máximo 11 dígitos');
+      return;
+    }
+
     if (!isCpfValid(cpf)) {
       Alert.alert('Erro', 'CPF inválido');
       return;
@@ -35,6 +40,24 @@ const CadastroClientes = () => {
     setEmail('');
     setTelefone('');
     setCpf('');
+  };
+
+  const formatTelefone = (text) => {
+    const cleaned = text.replace(/\D/g, '');
+    let formatted = cleaned.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
+    if (formatted.length > 15) {
+      formatted = formatted.substr(0, 15); // Limita para no máximo 9 dígitos após o DDD
+    }
+    return formatted;
+  };
+
+  const formatCPF = (text) => {
+    const cleaned = text.replace(/\D/g, '');
+    if (cleaned.length > 11) {
+      cleaned = cleaned.substr(0, 11); // Limita para no máximo 11 dígitos
+    }
+    const formatted = cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    return formatted;
   };
 
   return (
@@ -54,14 +77,16 @@ const CadastroClientes = () => {
       <Text>Telefone:</Text>
       <TextInput
         style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
-        onChangeText={text => setTelefone(text)}
+        onChangeText={text => setTelefone(formatTelefone(text))}
         value={telefone}
+        keyboardType="phone-pad"
       />
       <Text>CPF:</Text>
       <TextInput
         style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
-        onChangeText={text => setCpf(text)}
+        onChangeText={text => setCpf(formatCPF(text))}
         value={cpf}
+        keyboardType="numeric"
       />
       <Button
         title="Cadastrar"
