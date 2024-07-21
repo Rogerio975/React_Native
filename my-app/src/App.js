@@ -1,26 +1,20 @@
-import './App.css';
-import logo from './logo.svg';
+// Utilização do UseState.
 
-function App() {
+import React, { useState } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1); // Atualiza o estado incrementando count
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          Good afternoon. <br></br>Hi!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Você clicou {count} vezes</p>
+      <button onClick={handleClick}>Clique em mim</button>
     </div>
   );
 }
 
-export default App;
+export default MyComponent;
