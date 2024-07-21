@@ -11,7 +11,7 @@ function MyComponent() {
 
   return (
     <div>
-      <p>Você clicou {count} vezes</p>
+      <p>Você clicou {count} vezes.</p>
       <button onClick={handleClick}>Clique em mim</button>
     </div>
   );
