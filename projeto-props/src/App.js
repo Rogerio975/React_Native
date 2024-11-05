@@ -1,5 +1,5 @@
 function Greeting(props) {
-  return <h1>Olá, {props.name}!</h1>;
+  return <h1 style={{color: "orange", textAlign: "center"}}>Olá, {props.name}!</h1>;
 }
 
 function App() {
