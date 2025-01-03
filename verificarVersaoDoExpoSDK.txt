@@ -1,0 +1,3 @@
+Comando para verificar versão do Expo SDK pelo Power Shell:
+
+npm show expo version
