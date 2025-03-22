@@ -28,16 +28,16 @@ export default function AuthScreen() {
 
   return (
     <View style={{ padding: 20 }}>
-      <Text style={{ marginVertical: 10 }}>Email:</Text>
+      <Text style={{ marginVertical: 10, textAlign: 'center' }}>Email:</Text>
       <TextInput value={email} onChangeText={setEmail} style={{ borderBottomWidth: 1, marginVertical: 10 }} />
       
-      <Text style={{ marginVertical: 10 }}>Senha:</Text>
+      <Text style={{ marginVertical: 10, textAlign: 'center' }}>Senha:</Text>
       <TextInput value={password} onChangeText={setPassword} secureTextEntry style={{ borderBottomWidth: 1, marginVertical: 10 }} />
       
       <Button title="Criar Conta" onPress={handleSignUp} style={{ marginVertical: 10 }} />
       <Button title="Login" onPress={handleLogin} style={{ marginVertical: 10 }} />
       
-      {message ? <Text style={{ marginVertical: 10 }}>{message}</Text> : null}
+      {message ? <Text style={{ marginVertical: 10, textAlign: 'center' }}>{message}</Text> : null}
     </View>
   );
 }
