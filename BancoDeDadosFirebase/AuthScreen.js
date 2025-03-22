@@ -1,12 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { auth } from "./firebaseConfig";
 
 export default function AuthScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigation = useNavigation();
 
   const handleSignUp = async () => {
     try {
@@ -34,7 +36,9 @@ export default function AuthScreen() {
       <Text style={{ marginVertical: 10, textAlign: 'center' }}>Senha:</Text>
       <TextInput value={password} onChangeText={setPassword} secureTextEntry style={{ borderBottomWidth: 1, marginVertical: 10 }} />
       
-      <Button title="Criar Conta" onPress={handleSignUp} color="#FF5733" style={{ marginVertical: 10 }} /> {/* Alterado para cor desejada */}
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={{ marginVertical: 10 }}>
+        <Text style={{ color: '#FF5733', textAlign: 'center' }}>Criar Conta</Text>
+      </TouchableOpacity>
       <Button title="Login" onPress={handleLogin} style={{ marginVertical: 10 }} />
       
       {message ? <Text style={{ marginVertical: 10, textAlign: 'center' }}>{message}</Text> : null}
