@@ -34,7 +34,7 @@ export default function AuthScreen() {
       <Text style={{ marginVertical: 10, textAlign: 'center' }}>Senha:</Text>
       <TextInput value={password} onChangeText={setPassword} secureTextEntry style={{ borderBottomWidth: 1, marginVertical: 10 }} />
       
-      <Button title="Criar Conta" onPress={handleSignUp} style={{ marginVertical: 10 }} />
+      <Button title="Criar Conta" onPress={handleSignUp} color="#FF5733" style={{ marginVertical: 10 }} /> {/* Alterado para cor desejada */}
       <Button title="Login" onPress={handleLogin} style={{ marginVertical: 10 }} />
       
       {message ? <Text style={{ marginVertical: 10, textAlign: 'center' }}>{message}</Text> : null}
