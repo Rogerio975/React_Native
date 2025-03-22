@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import AuthScreen from './AuthScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Open up App.js to start working on your app!</Text>
+      <AuthScreen />
       <StatusBar style="auto" />
     </View>
   );
@@ -16,8 +17,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#0000FF', // Alterado para azul
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    color: '#FFFFFF', // Alterado para branco
   },
 });
