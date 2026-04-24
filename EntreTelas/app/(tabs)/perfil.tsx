@@ -3,6 +3,7 @@ import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Fonts } from '@/constants/theme';
 import { Image } from 'expo-image';
+import { Link } from 'expo-router';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -49,9 +50,11 @@ export default function CompanyProfileScreen() {
         </View>
 
         {/* Action Button */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Editar Perfil</Text>
-        </TouchableOpacity>
+        <Link href="/editar-perfil" asChild>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Editar Perfil</Text>
+          </TouchableOpacity>
+        </Link>
       </ThemedView>
     </ScrollView>
   );
